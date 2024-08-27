@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Century Gothic;
+}
+
+.navbar {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(nb.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100px; /* Adjust the height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the left */
+  padding-left: 60px; /* Add padding to the left */
+}
+
+.navbar nav {
+  margin-left: 20px; /* Adjust the margin as needed */
+}
+
+.navbar nav a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+  color: #3498db;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero-content h1 {
+  font-size: 3em;
+  color: #fff;
+}
+
+.hero-content p {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.cta-button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #c0392b;
+}
+
+.natural-products {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #ecf0f1;
+}
+
+.natural-products h2 {
+  font-size: 1.5em;
+  color: #2c3e50;
+  margin-bottom: 2em;
+}
+
+.product-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-item {
+  text-align: center;
+}
+
+.product-item img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}

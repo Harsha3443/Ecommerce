@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handmade Crafts Store</title>
+  <link rel="stylesheet" href="n.css">
+  <script src="script.js"></script>
+</head>
+<body>
+	<section class="header">
+    <nav>
+	<div class="logo">
+	<h2> Natural</h2>
+	</div>
+	<div class="nav-links">
+      <ul>
+        <li><a href="nav.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
+		<li><a href="#">Payment</a></li>
+        <li><a href="about.html">About Us</a></li>
+		<li><a href="#">Contact</a></li>
+		<li><a href="login.html">Login</a></li>
+      </ul>
+	  </div>
+    </nav>
+	<div class="hero">
+		  <h1>WELCOME TO THE </BR> WORLD OF HANDCRAFTED ITEMS</h1>
+      <p>Explore our collection of beautifully crafted handmade crafts.</p>
+	   <a href="shop.html" class="bt" align="center">Shop Now</a>
+	  </div>
+	</section>
+  <main>
+  <table>
+        <section class="featured-products">
+          <tr>
+		  <th></th>
+          <th> <h1 class="he">Featured Products</h1></th>
+		   <th></th>
+		    <th></th></tr>
+            <tr>
+			
+			<td><div class="product">
+              <img src="img/w1.jpg" alt="Product 1">
+              <h3>Mockup Soaps</h3>
+              <p>Handcrafted soaps by Mockup</br>Contains set of 4 soaps</br>
+			  each soap contains different flavor</br>1.rose</br>2.jasmine</br>3.lavender
+			  </br>4.sandel</p>
+              <span class="price">RS 200.00</span>
+              <a href="#" class="btn">Add to Cart</a>
+            </div></td>
+           <td> <div class="product">
+              <img src="img/can.jpg" alt="Product 2">
+              <h3>Scented Candles</h3>
+              <p>Handcrafted candels by Scented</br>Contains set of 4 candels</br>
+			  each candle contains different flavor</br>1.Almond</br>2.Eucalyptus</br>3.Lavender
+			  </br>4.Bergamot</p>
+              <span class="price">RS 250.00</span>
+              <a href="#" class="btn">Add to Cart</a>
+            </div></td>
+			<td> <div class="product">
+              <img src="img/OIP.jpg" alt="Product 2">
+              <h3>Stwitches Towels</h3>
+              <p>Handcrafted Towels by Stwiches</br>Contains set of 4 towels</br>
+			  each towel contains different colour</br>1.white</br>2.Peach</br>3.Brown
+			  </br>4.Baby pink</p>
+              <span class="price">RS 650.00</span>
+              <a href="#" class="btn">Add to Cart</a>
+            </div></td>
+			</tr>
+        </section>
+		</table>
+  </main>
+
+  <footer>
+    <p>&copy; <?php echo date("Y"); ?> Handmade Crafts Store. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+<script>
+function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingProductIndex = cart.findIndex(item => item.name === productName);
+
+    if (existingProductIndex !== -1) {
+        cart[existingProductIndex].quantity++;
+    } else {
+        cart.push({ name: productName, price: price, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('.btn');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const product = button.parentElement;
+            const productName = product.querySelector('h3').textContent;
+            const price = parseFloat(product.querySelector('.price').textContent.replace('RS ', ''));
+
+            addToCart(productName, price);
+
+            alert('Item added to cart!');
+        });
+    });
+});
+</script>

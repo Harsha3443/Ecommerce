@@ -1,0 +1,50 @@
+
+.fruite-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.fruite-item .fruite-img {
+    height: 400px; 
+    overflow: hidden;
+}
+
+.fruite-item .fruite-img img {
+    width: 100%;
+    position: relative;
+    transform: translateY(-50%);
+}
+.fruite-item .text-white {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.7); /* Adjust the opacity as needed */
+    backdrop-filter: blur(10px); /* For a blurred effect */
+}
+
+/* Apply styles to the content inside fruite-item */
+.fruite-item .border-top-0 {
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust the opacity as needed */
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s ease; /* Smooth transition for parallax effect */
+}
+
+.fruite-item:hover .border-top-0 {
+    transform: translateY(-30px); /* Adjust the translateY value for the desired parallax effect */
+}
+
+.fruite-item h4,
+.fruite-item p {
+    color: #000; /* Adjust text color */
+}
+
+.fruite-item .btn {
+    border-color: #000; /* Adjust button border color */
+    color: #000; /* Adjust button text color */
+}
+
+.fruite-item .btn:hover {
+    background-color: #000; /* Adjust button hover background color */
+    color: #fff; /* Adjust button hover text color */
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <script src="cart.js"></script>
+    <link rel="stylesheet" href="sh.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">Online Shopping</div>
+            <ul class="links">
+                <li><a href="nav.html">Home</a></li>
+				<li><a href="shop.html">shop</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="pay.html">Payment</a></li>
+                <li><a href="con.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <h1 align="center">The amount is in Rs not in $</h1>
+    <main align="center">
+        <section class="cart">
+            <h2>Your Shopping Cart</h2>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <h3>Total:</h3>
+                <span id="total-amount">$0.00</span>
+            </div>
+            <button onclick="checkout()">Checkout and Pay</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Online Shopping. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsDiv = document.querySelector('.cart-items');
+            let totalPrice = 0;
+
+            cartItemsDiv.innerHTML = '';
+
+            cart.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div>
+                        <span>${item.name}</span>
+                        <span>$${item.price.toFixed(2)}</span>
+                        <span>Quantity: ${item.quantity}</span>
+                        <button onclick="removeItem('${item.name}')">Remove</button>
+                    </div>
+                `;
+                cartItemsDiv.appendChild(itemDiv);
+                totalPrice += item.price * item.quantity;
+            });
+
+            const totalAmountSpan = document.getElementById('total-amount');
+            totalAmountSpan.textContent = `$${totalPrice.toFixed(2)}`;
+        }
+
+        function removeItem(name) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const index = cart.findIndex(item => item.name === name);
+            if (index !== -1) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function addItem(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: name, price: price, quantity: 1, image: image });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function checkout() {
+            alert('Checkout and payment functionality will be implemented in the future.');
+        }
+
+        displayCart();
+    </script>
+	
+</body>
+</html>
